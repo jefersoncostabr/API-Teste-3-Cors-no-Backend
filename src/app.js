@@ -24,26 +24,31 @@ function buscaMensagem(id) {
   })
 }
 
-app.get("/", (req, res) => {
+const corsOptions = {
+  origin: 'https://consumo-api-3.netlify.app',
+  optionSucessStatus: 200
+}
+
+app.get("/", cors(corsOptions), (req, res) => {
   res.send("Rota inicial ok!");
 });
 
-app.get("/hello/:name", (req, res) => {
+app.get("/hello/:name", cors(corsOptions), (req, res) => {
   const name = req.params.name;
   res.send(`Olá, ${name}!`);
 });
 
-app.get("/mensagens", (req, res) => {
+app.get("/mensagens", cors(corsOptions), (req, res) => {
   // res.status(200).json("Mensagem:"+mensagens[1].mensagem);
   res.status(200).json(mensagens);
 });
 
-app.get("/mensagens/:id", (req, res) => {
+app.get("/mensagens/:id", cors(corsOptions), (req, res) => {
   const index = buscaMensagem(req.params.id);
   res.status(200).json(mensagens[index]);
 });
 
-app.post("/addmsg", (req, res) => {
+app.post("/addmsg", cors(corsOptions), (req, res) => {
   mensagens.push(req.body);
   res.status(201).send("Nova msg cadastrada")
 });
@@ -55,7 +60,7 @@ app.put("/mensagens/:id", (req, res) => {
   res.status(200).json(mensagens);
 });
 
-app.delete("/del/:id", (req, res) => {
+app.delete("/del/:id", cors(corsOptions), (req, res) => {
   const index = buscaMensagem(req.params.id);
   mensagens.splice(index,1);
   res.status(200).json(mensagens);
