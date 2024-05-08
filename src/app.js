@@ -25,7 +25,7 @@ function buscaMensagem(id) {
 }
 
 const corsOptions = {
-  origin: 'https://consumo-api-3.netlify.app',
+  origin: ['https://consumo-api-3.netlify.app', 'http://localhost:5500'],
   optionSucessStatus: 200
 }
 
