@@ -8,14 +8,9 @@ app.use(express.json());
 const mensagens = [
 	{
 		id: 1,
-		nome: "Antonio",
-		mensagem: "Próximo ensaio 15/05",
-	},
-	{
-		id: 2,
-		nome: "Antonio",
-		mensagem: "Teinar a coreografia",
-	},
+		nome: "Teste",
+		mensagem: "Teste",
+	}
 ];
 
 function buscaMensagem(id) {
